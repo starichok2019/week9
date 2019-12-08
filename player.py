@@ -4,7 +4,7 @@
 
 from classes.card import Card
 
-QUANTITY_CARD = 1  # по умолчанию карточек 1
+QUANTITY_CARDS = 1  # по умолчанию карточек 1
 
 # типы игроков
 types_of_players = {0: 'Компьютер', 1: 'Человек'}
@@ -22,13 +22,14 @@ class Player:
         # заполняем карточку игрока
         self.cards = Card()
     def show_cards(self):
-        self.card.show_card()
+        self.cards.show_card()
 
-    def move_on(selfself, barrel):
-        print('Делаю ход')
+    def move_on(selfs, barrel):
+        return 0
+
 
 class Human(Player):
-    def __init__(selfself, number=1):
+    def __init__(self, number=1):
         super().__init__(number, 1)
 
 
@@ -36,7 +37,7 @@ class Human(Player):
         if self.is_playing:
             print(f'\nХод: {self.name} (Человек')
             self.card.show_card()
-            answer('Зачеркнуть цифру? (y/ n').lower()
+            answer = input('Зачеркнуть цифру? (y/ n').lower()
             # исключим ошибку: русская 'н' на той же клавише, что и английская 'y'
             if (answer == 'y') or (answer == 'н'):
                 if barrel in self.card.field:
@@ -63,17 +64,17 @@ class Human(Player):
 class Computer(Player):
 
     def __init__(self, number=1):
-            super().__init__(number, 0)
+        super().__init__(number, 0)
 
     def move_on(self, barrel):
-            print(f'\nХод: {self.name} ({types_of_players[self.who]}) ')
-            self.cards.show_card()
-            if barrel in self.cards.field:
-                print(f'Есть номер {barrel}!\n')
-                self.cards.close_box(self.cards.field.index(barrel))
-            else:
-                print('Мимо!\n')
-            return 0 if self.cards.is_empty() else 1    # 0-продолжить игру, 1- карточка заполнена
+        print(f'\nХод: {self.name} ({types_of_players[self.who]}) ')
+        self.cards.show_card()
+        if barrel in self.cards.field:
+            print(f'Есть номер {barrel}!\n')
+            self.cards.close_box(self.cards.field.index(barrel))
+        else:
+            print('Мимо!\n')
+        return 0 if self.cards.is_empty() else 1    # 0-продолжить игру, 1- карточка заполнена
 
 
 

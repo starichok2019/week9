@@ -2,15 +2,18 @@
 Класс Game ..
 """
 
-from classes.player  import Computer, Human, types_of_players
+
+from classes.player import Computer, Human, types_of_players
 from classes.bag import Bag
+
+
 
 QUANTITY_PLAYERS = 2   # по умолчанию игроков два
 
 MAX_PLAYERS = 4
 
 
-# можем перенести в описание класса Player
+# можем перенести в описание класса Player?
 
 def choose_who():
     print('\nВыбираем тип нового игрока из ')
@@ -22,11 +25,12 @@ def choose_who():
             raise ValueError
     except ValueError:
         who = 0
-        print(f'становлен тип по умолчанию {types_of_players[0]}')
+        print(f'установлен тип по умолчанию {types_of_players[0]}')
     return who
 
 
 # определяем количество игроков
+""" 
 
 def get_quantity_players():
     try:
@@ -36,18 +40,15 @@ def get_quantity_players():
         quantity_players = QUANTITY_PLAYERS
         print(f'Установлено количество игроков по умолчанию {QUANTITY_PLAYERS}')
     return quantity_players
-
+"""
 
 class Game:
-
     def __init__(self):
         self.bag = Bag()
         self.is_run = True
         self.players = []
         self.running_players = get_quantity_players()
         self.lap = 1
-
-
 # набираем игроков
         for i in range(1, self.running_players + 1 ):
 # присваиваем тип игрока
@@ -56,7 +57,7 @@ class Game:
 
 
 # Вытаскиваем и показываем бочонок
-    def show_barrel(self):
+    def pull_out_barrel(self):
         print(f'РАУНД № {self.lap}')
         print('перемешиваем бочонки в мешке')
         self.bag.shake_bag()
