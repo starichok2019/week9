@@ -2,7 +2,7 @@
 Класс Player
 """
 
-from classes.card import Card
+from card import Card
 
 QUANTITY_CARD = 1  # по умолчанию карточек 1
 

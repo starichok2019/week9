@@ -3,7 +3,7 @@
 """
 
 import random
-from classes.bag import QUANTITY_BARRELS
+from bag import QUANTITY_BARRELS
 
 # размеры карточек, заполненность, количество по умолчанию
 CARD_WIDTH = 9
@@ -21,8 +21,8 @@ class Card:
         self.rest = CARD_FILLED_BOX   # считаем сколько незакрытых карточек
         # заполняем карточку
         self.field = []
-        population = list(rang(1, QUANTITY_BARRELS +1))   # все бочонки от 1 до максимума
-        position = list(rang(0, CARD_WIDTH ))             # позиции от 0 до ширины строки карточки
+        population = list(range(1, QUANTITY_BARRELS +1))   # все бочонки от 1 до максимума
+        position = list(range(0, CARD_WIDTH ))             # позиции от 0 до ширины строки карточки
         card_population = random.sample(population, CARD_FILLED * CARD_HEIGHT)
         for i in range(0, CARD_HEIGHT):
             row_population = sorted(card_population[(i * CARD_FILLED):((i + 1) * CARD_FILLED)])
@@ -31,7 +31,7 @@ class Card:
             # заполняем. если пусто то 0
             self.field.extend(row)
     def close_box(self, number):
-        self.field[number] = CHECKED_BOX * self.field[number] # делаем число отрицательным, это значит число в карточке закрыто
+        self.field[number] = CHECKED_BOX *self.field[number] # делаем число отрицательным, это значит число в карточке закрыто
         self.rest -= 1
 
     def is_empty(self):
@@ -46,7 +46,7 @@ class Card:
 
         """
         for i in range(0, CARD_HEIGHT):
-            print('-' * ((CARD_WIDTH*5)+1))
+            print('-' * ((CARD_WIDTH*5)+1) )
             print('', end='|')
             for j in range(i*CARD_WIDTH, (i+1)*CARD_WIDTH):
                 if self.field[j] < 0 :
