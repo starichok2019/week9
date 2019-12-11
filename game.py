@@ -3,7 +3,7 @@
 Класс Game
 """
 
-from classes.player import Computer, Human, types_of_players
+from player import Computer, Human, types_of_players
 
 
 QUANTITY_PLAYERS = 2  # по умолчанию игроков два

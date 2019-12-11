@@ -4,7 +4,7 @@
 """
 
 
-from classes.game import Game, QUANTITY_PLAYERS, MAX_PLAYERS
+from game import Game, QUANTITY_PLAYERS, MAX_PLAYERS
 
 
 
